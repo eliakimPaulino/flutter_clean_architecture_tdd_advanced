@@ -10,6 +10,14 @@ void main() {
       isConfirmed: true,
     );
     expect(player.getInitials(), 'EF');
+
+    final player2 = NextEventPlayer(
+      id: '',
+      name: 'Giulia Vasconcelos Neves Lamon',
+      isConfirmed: true,
+    );
+    expect(player2.getInitials(), 'GL');
+
   });
 }
 
