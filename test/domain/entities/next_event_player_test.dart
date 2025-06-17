@@ -26,6 +26,10 @@ void main() {
     // sut: System Under Test
     expect(initialsOf(''), '-');
   });
+  test('Should ignore extra whitespaces', () {
+    // sut: System Under Test
+    expect(initialsOf('Eliakim França '), 'EF');
+  });
 }
 
 class NextEventPlayer {
@@ -49,7 +53,7 @@ class NextEventPlayer {
   }
 
   String getInitials() {
-    final names = name.toUpperCase().split(' ');
+    final names = name.toUpperCase().trim().split(' ');
     print(names);
     final firstChar = names.first.split('').firstOrNull ?? '-';
     final lastChar =
