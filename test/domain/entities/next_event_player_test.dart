@@ -11,8 +11,20 @@ void main() {
     expect(initialsOf('Eliakim França'), 'EF');
 
     expect(initialsOf('Giulia Vasconcelos Neves Lamon'), 'GL');
+  });
 
-    expect(initialsOf('Paulo Roberto'), 'PR');
+  test('Should return the firsts two letters of the first name', () {
+    // sut: System Under Test
+    expect(initialsOf('Paulo'), 'PA');
+  });
+
+  test('Should return the firsts letter case Name is just one char', () {
+    // sut: System Under Test
+    expect(initialsOf('l'), 'L');
+  });
+  test('Should return - case Name is empty', () {
+    // sut: System Under Test
+    expect(initialsOf(''), '-');
   });
 }
 
@@ -37,8 +49,12 @@ class NextEventPlayer {
   }
 
   String getInitials() {
-    final names = name.split(' ');
-    if (names.length < 2) return names.first.isNotEmpty ? names.first[0] : '';
-    return '${names.first[0]}${names.last[0]}';
+    final names = name.toUpperCase().split(' ');
+    print(names);
+    final firstChar = names.first.split('').firstOrNull ?? '-';
+    final lastChar =
+        names.last.split('').elementAtOrNull(names.length == 1 ? 1 : 0) ?? '';
+    print('$firstChar$lastChar');
+    return '$firstChar$lastChar';
   }
 }
