@@ -3,10 +3,18 @@ import 'dart:math';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
+
+    late String groupId;
+    late LoadNextEventMockRepository repo;
+    late NextEventLoader sut;
+
+  setUp(() {
+    groupId = Random().nextInt(50000).toString();
+    repo = LoadNextEventMockRepository();
+    sut = NextEventLoader(repo: repo);
+  });
+
   test('Should load event data from a repository.', () async {
-    final groupId = Random().nextInt(50000).toString();
-    final repo = LoadNextEventMockRepository();
-    final sut = NextEventLoader(repo: repo);
     await sut(groupId: groupId);
     expect(repo.groupId, groupId);
   });
